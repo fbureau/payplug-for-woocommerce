@@ -154,6 +154,8 @@ N’attendez plus ! Crééz [votre compte](https://www.payplug.com/portal2/signu
 
 ## Changelog ##
 
+### 1.0.1s ###
+* Workaround for connexion issue activated by default 
 
 ### 1.0 ###
 * First version

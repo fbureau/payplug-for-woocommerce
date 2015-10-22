@@ -7,7 +7,7 @@
  * Author URI: http://www.payplug.com/
  * Original Author: Boris Colombier
  * Original Author URI: https://wba.fr
- * Version: 1.0.0
+ * Version: 1.0.1s
  * Text Domain: woopayplug
  * Domain Path: /languages/
  */
@@ -225,10 +225,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                         'default' => 'no',
                     ),
                     'payplug_parameters' => array(
-                        'title' => '',
-                        'type' => 'hidden',
+                        'title' => __('PayPlug configuration', 'woopayplug'),
+                        'type' => 'textarea',
                         'default' => '',
-                        'description' => ''
+                        'description' => __("Your server does not support cURL for php.<br>To configure the plugin, you need to log on to this <a href='https://www.payplug.fr/portal/ecommerce/autoconfig' target='_blank’>Payplug page</a> using your login and password.<br>Copy all of the code displayed on the page and paste it into the last ‘PayPlug Configuration’ field at the bottom of the form, leaving the login and password fields empty, and click submit.<br>Test the plugin by placing an order to ensure everything work smoothly.", 'woopayplug')
                     )
                 );
             }

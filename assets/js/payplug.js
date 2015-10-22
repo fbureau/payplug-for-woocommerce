@@ -22,30 +22,41 @@ jQuery('input[type="submit"]').click(function(e){
         }
     });
 
-    jQuery.post( PayPlugJSParams.url, { login: jQuery("input[name='woocommerce_woopayplug_payplug_login']").val(), password: jQuery("input[name='woocommerce_woopayplug_payplug_password']").val(), test_mode: jQuery("input[name='woocommerce_woopayplug_test_mode']").is(':checked')})
-    .done(function(data) {
-        if(data == "errorconnexion"){
-            jQuery(window).unblock();
-            alert(PayPlugJSParams.error_connecting);
-        }else if(data == "errorlogin"){
-            jQuery(window).unblock();
-            alert(PayPlugJSParams.error_login);
-        }else{
-            try{
-                jQuery.parseJSON(data);
-                jQuery("input[name='woocommerce_woopayplug_payplug_parameters']").val(encodeURI(data));
-                jQuery("input[name='woocommerce_woopayplug_payplug_password']").val('');
-                jQuery("#mainform").submit();
-            }
-            catch(err){
+    if(jQuery("input[name='woocommerce_woopayplug_payplug_login']").val()=="" && jQuery("input[name='woocommerce_woopayplug_payplug_password']").val()=="" && jQuery("textarea[name='woocommerce_woopayplug_payplug_parameters']").val()!=""){
+        try{
+            jQuery.parseJSON(jQuery("textarea[name='woocommerce_woopayplug_payplug_parameters']").val());
+            jQuery("textarea[name='woocommerce_woopayplug_payplug_parameters']").val(encodeURI(jQuery("textarea[name='woocommerce_woopayplug_payplug_parameters']").val()));
+        }
+        catch(err){}
+        jQuery("#mainform").submit();
+     } else {
+        jQuery.post( PayPlugJSParams.url, { 
+            login: jQuery("input[name='woocommerce_woopayplug_payplug_login']").val(), 
+            password: jQuery("input[name='woocommerce_woopayplug_payplug_password']").val(), 
+            test_mode: jQuery("input[name='woocommerce_woopayplug_test_mode']").is(':checked')})
+        .done(function(data) {
+            if(data == "errorconnexion"){
                 jQuery(window).unblock();
                 alert(PayPlugJSParams.error_connecting);
+            }else if(data == "errorlogin"){
+                jQuery(window).unblock();
+                alert(PayPlugJSParams.error_login);
+            }else{
+                try{
+                    jQuery.parseJSON(data);
+                    jQuery("input[name='woocommerce_woopayplug_payplug_parameters']").val(encodeURI(data));
+                    jQuery("input[name='woocommerce_woopayplug_payplug_password']").val('');
+                    jQuery("#mainform").submit();
+                }
+                catch(err){
+                    jQuery(window).unblock();
+                    alert(PayPlugJSParams.error_connecting);
+                }
             }
-        }
-    })
-    .fail(function() {
-        jQuery(window).unblock();
-        alert(PayPlugJSParams.error_unknown);
-    });
-        
+        })
+        .fail(function() {
+            jQuery(window).unblock();
+            alert(PayPlugJSParams.error_unknown);
+        });
+    }  
 })
