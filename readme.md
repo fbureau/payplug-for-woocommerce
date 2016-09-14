@@ -2,7 +2,7 @@
 * Contributors: PayPlug
 * Tags: WooCommerce, Payment, Gateway, Credit Cards, Shopping Cart, PayPlug, Extension
 * Requires at least: 3.0.1
-* Tested up to: 4.3.1
+* Tested up to: 4.5
 * Stable tag: 1.4.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -154,8 +154,11 @@ N’attendez plus ! Crééz [votre compte](https://www.payplug.com/portal2/signu
 
 ## Changelog ##
 
+### 1.0.2s ###
+* Bugfix on IPN notification never using SSL. 
+
 ### 1.0.1s ###
-* Workaround for connexion issue activated by default 
+* Workaround for connexion issue activated by default
 
 ### 1.0 ###
 * First version

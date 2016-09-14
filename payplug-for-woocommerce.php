@@ -7,7 +7,7 @@
  * Author URI: http://www.payplug.com/
  * Original Author: Boris Colombier
  * Original Author URI: https://wba.fr
- * Version: 1.0.1s
+ * Version: 1.0.2s
  * Text Domain: woopayplug
  * Domain Path: /languages/
  */
@@ -99,7 +99,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 $this->has_fields          = false;
                 $this->method_title        = __( 'PayPlug', 'woopayplug' );
 
-                $this->notify_url   = str_replace( 'https:', 'http:', add_query_arg( 'wc-api', 'WC_Gateway_Payplug', home_url( '/' ) ) );
+                $this->notify_url   = add_query_arg( 'wc-api', 'WC_Gateway_Payplug', home_url( '/' )); 
 
                 // Load the form fields.
                 $this->init_form_fields();
